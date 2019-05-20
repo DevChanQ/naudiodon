@@ -33,7 +33,7 @@
             },
             "link_settings": {
               "libraries": [
-                "./libportaudio.dylib"
+                "<@(module_root_dir)/build/Release/libportaudio.dylib"
               ]
             },
             "copies": [
