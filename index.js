@@ -33,11 +33,10 @@ function AudioIO(options) {
 
   const doRead = size => {
     audioIOAdon.read(size, (err, buf) => {
-      if (err)
-        process.nextTick(() => ioStream.emit('error', err));
+      if (err) process.nextTick(() => ioStream.emit('error', err));
+      if (buf && buf.length > 0) {
         ioStream.push(buf);
-      if (buf && buf.length < size)
-      ioStream.push(null);
+      } else ioStream.push(Buffer.alloc(size))
     });
   };
 

@@ -15,7 +15,7 @@
       ],
       "dependencies": [
         "<!(node -p \"require('node-addon-api').gyp\")"
-      ],  
+      ],
       "conditions" : [
         [
           'OS=="mac"', {
@@ -28,12 +28,12 @@
                 '-fexceptions'
               ],
               'OTHER_LDFLAGS': [
-                "-Wl,-rpath,<@(module_root_dir)/build/Release"
+                "-Wl,-rpath,@loader_path/"
               ]
             },
             "link_settings": {
               "libraries": [
-                "<@(module_root_dir)/build/Release/libportaudio.dylib"
+                "./libportaudio.dylib"
               ]
             },
             "copies": [
@@ -85,7 +85,7 @@
                 ],
                 "link_settings": {
                   "libraries": [
-                    "<@(module_root_dir)/build/Release/libportaudio.so.2" 
+                    "<@(module_root_dir)/build/Release/libportaudio.so.2"
                   ],
                   "ldflags": [
                     "-L<@(module_root_dir)/build/Release",
